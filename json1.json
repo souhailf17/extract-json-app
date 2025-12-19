@@ -1,0 +1,138 @@
+{
+  "proc_title": "الاستفادة من الــتـقــاعــد الـمــبـكــر ابتداء من سن 55 (Expertise)",
+  "proc_description": "الاسـتـفـادة مـن الـتـقـاعـد الـمـبـكـر ابتداء من سن 55.\nيخضع هذا القرار لمقتضيات المرسوم رقم   2.22.386 بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات المتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجاز خبرة تقنية أو بحث عمومي.",
+  "proc_deliverable": "قرار الاستفادة من التقاعد المبكر",
+  "administration": "الصندوق الوطني للضمان الاجتماعي",
+  "thematic": "الشغل والوظيفة",
+  "subThematic": "التقاعد والمعاشات والإيرادات",
+  "delays": [
+    {
+      "delay": "3 أشهر ونصف",
+      "condition": null
+    }
+  ],
+  "prices": [
+    {
+      "price": "بالمجان",
+      "condition": null
+    }
+  ],
+  "cases": [
+    {
+      "title": "الاستفادة من التقاعد المبكر ابتداء من سن 55",
+      "Docs": [
+        {
+          "name": "طلب التقاعد المبكر",
+          "specificity": "مرجع 315-1-07",
+          "originalOrCopy": "original",
+          "is_proc_itself": "no",
+          "the_proc_name": null,
+          "condition": null,
+          "alternatives": null,
+          "reference_doc_name": "استمارة أو طلب"
+        },
+        {
+          "name": "بطاقة التعريف الوطنية",
+          "specificity": "بطاقة الإقامة أو بطاقة التسجيل بالنسبة للأجانب",
+          "originalOrCopy": "copy",
+          "is_proc_itself": "yes",
+          "the_proc_name": null,
+          "condition": null,
+          "alternatives": [
+            {
+              "docname": "بطاقة الإقامة",
+              "specificities": "للمتقاعدين الأجانب",
+              "condition": "إذا كان المعني أجنبياً",
+              "reference_doc_name": "بطاقة أو شهادة الإقامة",
+              "is_proc_itself": "yes",
+              "matching_procedure": [
+                {
+                  "matching_procedure_id": "cb2a5a6a-4e41-49f2-868b-cd79e56afe17",
+                  "proc_title": "بطاقة الإقامة للأجانب أو تجديدها",
+                  "proc_description": "تكوين ملف الحصول على بطاقة الإقامة أو تجديدها"
+                }
+              ],
+              "mapping_condition": [
+                [
+                  0,
+                  1
+                ]
+              ],
+              "mapping_condition_verbose": [
+                {
+                  "question": "هل أنت مواطن مغربي؟",
+                  "answer": "لا"
+                }
+              ]
+            },
+            {
+              "docname": "بطاقة التسجيل",
+              "specificities": "للمتقاعدين الأجانب",
+              "condition": "إذا كان المعني أجنبياً",
+              "reference_doc_name": "بطاقة أو شهادة أو وثيقة أو رخصة تسجيل",
+              "is_proc_itself": "yes",
+              "matching_procedure": [
+                {
+                  "matching_procedure_id": "f5882962-428f-4b69-ac3b-0bc0cc73f616",
+                  "proc_title": null,
+                  "proc_description": null
+                }
+              ],
+              "mapping_condition": [
+                [
+                  0,
+                  1
+                ]
+              ],
+              "mapping_condition_verbose": [
+                {
+                  "question": "هل أنت مواطن مغربي؟",
+                  "answer": "لا"
+                }
+              ]
+            }
+          ],
+          "reference_doc_name": "بطاقة التعريف الوطنية أو وثيقة تثبت الهوية",
+          "matching_procedure": [
+            {
+              "matching_procedure_id": "eb22a3f6-95fb-423f-8964-39c6bcedc13c",
+              "proc_title": "البطاقة الوطنية للتعريف الإلكترونية",
+              "proc_description": "إثبات الهوية؛ قضاء المصالح الإدارية؛ إنجاز جواز السفر؛ الإدلاء بها لدى المؤسسات العمومية أو الخاصة عند الاقتضاء؛  ولوج بعض الخدمات عن بعد...\n\n"
+            }
+          ]
+        },
+        {
+          "name": "ورقة أداء الاشتراكات",
+          "specificity": "نسخة مختومة من طرف البنك",
+          "originalOrCopy": "copy",
+          "is_proc_itself": "no",
+          "the_proc_name": null,
+          "condition": null,
+          "alternatives": null,
+          "reference_doc_name": "وصل أو شهادة أداء"
+        },
+        {
+          "name": "شهادة بنكية",
+          "specificity": null,
+          "originalOrCopy": "original",
+          "is_proc_itself": "no",
+          "the_proc_name": null,
+          "condition": null,
+          "alternatives": [
+            {
+              "docname": "نموذج شيك",
+              "specificities": "بديل عن الشهادة البنكية الشخصية",
+              "condition": "في حالة عدم توفر الشهادة البنكية",
+              "reference_doc_name": "شيك مشطب عليه",
+              "is_proc_itself": "no"
+            }
+          ],
+          "reference_doc_name": "شهادة التعريف البنكي"
+        }
+      ]
+    }
+  ],
+  "proc_id": "d50fdd5a-a639-450b-9731-24e76b04b7c3",
+  "legalRefs": "ظهير شريف بمثابة قانون رقم 184 - 72 - 1 بتاريخ 15 جمادى الثانية 1392 ) 27 يوليوز\n1972 ( يتعلق بنظام الضمان الاجتماعي كما تم تغييره و تتميمه || مرسوم رقم 181 - 05 - 2 صادر في 13 من جمادى الآخرة 1426 ) 20 يوليو 2005 ( بتحديد كيفيات\nتطبيق الفصل 53 مكرر من الظهير الشريف بمثابة قانون رقم 184 - 72 - 1 الصادر في 15 من جمادى\nالآخرة 1392 ) 27 يوليو 1972 ( المتعلق بنظام الضمان الاجتماعي، كما تم تغييره وتتميمه بالقانون\nرقم 02 - 17 || مرسوم رقم 386ـ22ـ2 صادرفي 17 من شوال 1444(8 ماي 2023)بتحديد لائحة القرارات الإدارية التي تقتضي معالجة الطلبات الملتعلقة بها تمديد الأجل القانوني المحدد لتسليمها، لإنجازخبرة تقنية أو بحث عمومي",
+  "link": "https://idarati.ma/informationnel/ar/thematique/780e2a00-ce2f-46e5-883a-65a00bcc71f7d50fdd5a-a639-450b-9731-24e76b04b7c3"
+}
