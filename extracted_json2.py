@@ -13,16 +13,25 @@ uploaded_files = st.file_uploader(
 
 rows = []
 
+def find_matching_procedures(obj):
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            if key == "matching_procedure" and isinstance(value, list):
+                for item in value:
+                    rows.append({
+                        "matching_procedure_id": item.get("matching_procedure_id"),
+                        "proc_title": item.get("proc_title")
+                    })
+            else:
+                find_matching_procedures(value)
+    elif isinstance(obj, list):
+        for item in obj:
+            find_matching_procedures(item)
+
 if uploaded_files:
     for file in uploaded_files:
         data = json.load(file)
-
-        if isinstance(data, dict) and "matching_procedure" in data:
-            for item in data["matching_procedure"]:
-                rows.append({
-                    "matching_procedure_id": item.get("matching_procedure_id"),
-                    "proc_title": item.get("proc_title")
-                })
+        find_matching_procedures(data)
 
     df = pd.DataFrame(rows, columns=["matching_procedure_id", "proc_title"])
     st.dataframe(df)
@@ -31,8 +40,8 @@ if uploaded_files:
 
     with open("extracted_data.xlsx", "rb") as f:
         st.download_button(
-            label="Télécharger le fichier Excel",
-            data=f,
+            "Télécharger le fichier Excel",
+            f,
             file_name="extracted_data.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
