@@ -20,7 +20,7 @@ if file1 and file2:
         st.error("Le deuxième fichier doit contenir les colonnes 'proc_id', 'proc_title' et 'N json'.")
     else:
         # Merge des fichiers sur les colonnes correspondantes
-        merged_df = pd.merge(df1, df2, left_on=['id', 'act'], right_on=['proc_id', 'proc_title'], how='inner')
+        merged_df = pd.merge(df1, df2, left_on=['ID', 'ACT'], right_on=['proc_id', 'proc_title'], how='inner')
 
         # Sélectionner uniquement les colonnes demandées
         result_df = merged_df[['id', 'N json', 'act']]
