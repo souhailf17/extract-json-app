@@ -4,8 +4,8 @@ import pandas as pd
 st.title("Comparaison de fichiers Excel et extraction des données")
 
 # Upload des fichiers
-file1 = st.file_uploader("Upload du premier fichier Excel", type=["xlsx"], key="file1")
-file2 = st.file_uploader("Upload du deuxième fichier Excel", type=["xlsx"], key="file2")
+file1 = st.file_uploader("Upload du premier fichier Excel (ID , ACT)", type=["xlsx"], key="file1")
+file2 = st.file_uploader("Upload du deuxième fichier Excel (proc_id , N json , proc_title", type=["xlsx"], key="file2")
 
 def process_files(df1, df2):
     # Supprimer les espaces autour des noms de colonnes
