@@ -23,7 +23,7 @@ def process_files(df1, df2):
         return None
 
     # Convertir les colonnes ID en string pour éviter les problèmes de type
-    df1['id'] = df1['id'].astype(str)
+    df1['ID'] = df1['ID'].astype(str)
     df2['proc_id'] = df2['proc_id'].astype(str)
 
     # Merge des fichiers sur les colonnes correspondantes
