@@ -27,11 +27,11 @@ def process_files(df1, df2):
     df1['id'] = df1['id'].astype(str)
     df2['proc_id'] = df2['proc_id'].astype(str)
 
-    # Merge des fichiers sur les colonnes correspondantes
-    merged_df = pd.merge(df1, df2, left_on=['id', 'act'], right_on=['proc_id', 'proc_title'], how='inner')
+    # Merge avec un left join pour conserver toutes les lignes du premier fichier
+    merged_df = pd.merge(df1, df2, left_on=['id', 'act'], right_on=['proc_id', 'proc_title'], how='left')
 
-    # Supprimer les espaces dans les noms de colonnes après merge
-    merged_df.columns = merged_df.columns.str.strip()
+    # Remplacer les valeurs manquantes de N json par "Vide"
+    merged_df['N json'] = merged_df['N json'].fillna("Vide")
 
     # Extraire les colonnes demandées
     result_df = merged_df[['id', 'N json', 'act']]
