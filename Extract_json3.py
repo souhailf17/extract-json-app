@@ -36,11 +36,16 @@ def process_files(df1, df2):
         how='left'
     )
 
-    # Pour les lignes sans correspondance, mettre "Vide" dans N json
-    merged_df['N json'] = merged_df.apply(
-        lambda row: "Vide" if pd.isna(row['N json']) and (row['proc_id'] is pd.NA or row['proc_id'] is None) else row['N json'],
-        axis=1
-    )
+    # Appliquer la règle pour N json
+    def fill_n_json(row):
+        if pd.isna(row['proc_id']):  # Pas trouvé dans le deuxième fichier
+            return "Vide"
+        elif pd.isna(row['N json']) or row['N json'] == "":  # Correspond mais N json vide
+            return "pas encore"
+        else:  # Valeur existante
+            return row['N json']
+
+    merged_df['N json'] = merged_df.apply(fill_n_json, axis=1)
 
     # Extraire uniquement les colonnes nécessaires
     result_df = merged_df[['id', 'N json', 'act']]
