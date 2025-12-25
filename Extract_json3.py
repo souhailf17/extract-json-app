@@ -8,32 +8,33 @@ file1 = st.file_uploader("Upload du premier fichier Excel", type=["xlsx"], key="
 file2 = st.file_uploader("Upload du deuxième fichier Excel", type=["xlsx"], key="file2")
 
 def process_files(df1, df2):
-    # Nettoyage des noms de colonnes
+    # Supprimer les espaces autour des noms de colonnes
     df1.columns = df1.columns.str.strip()
     df2.columns = df2.columns.str.strip()
 
-    # Identifier les colonnes principales
-    # df1 : id et act
-    # df2 : proc_id, proc_title, N json
-    if not all(col in df1.columns for col in ['ID', 'ACT']):
-        st.error("Le premier fichier doit contenir les colonnes 'id' et 'act'.")
+    # Renommer les colonnes pour correspondre au script
+    df1.rename(columns={'ID': 'id', 'ACT': 'act'}, inplace=True)
+
+    # Vérifier les colonnes nécessaires
+    if not all(col in df1.columns for col in ['id', 'act']):
+        st.error("Le premier fichier doit contenir les colonnes 'ID' et 'ACT'.")
         return None
     if not all(col in df2.columns for col in ['proc_id', 'proc_title', 'N json']):
         st.error("Le deuxième fichier doit contenir les colonnes 'proc_id', 'proc_title' et 'N json'.")
         return None
 
     # Convertir les colonnes ID en string pour éviter les problèmes de type
-    df1['ID'] = df1['ID'].astype(str)
+    df1['id'] = df1['id'].astype(str)
     df2['proc_id'] = df2['proc_id'].astype(str)
 
     # Merge des fichiers sur les colonnes correspondantes
-    merged_df = pd.merge(df1, df2, left_on=['ID', 'ACT'], right_on=['proc_id', 'proc_title'], how='inner')
+    merged_df = pd.merge(df1, df2, left_on=['id', 'act'], right_on=['proc_id', 'proc_title'], how='inner')
 
-    # Nettoyage des colonnes après merge
+    # Supprimer les espaces dans les noms de colonnes après merge
     merged_df.columns = merged_df.columns.str.strip()
 
     # Extraire les colonnes demandées
-    result_df = merged_df[['ID', 'N json', 'ACT']]
+    result_df = merged_df[['id', 'N json', 'act']]
 
     return result_df
 
