@@ -14,7 +14,7 @@ if file1 and file2:
     df2 = pd.read_excel(file2)
 
     # Vérifier si les colonnes nécessaires existent
-    if 'id' not in df1.columns or 'act' not in df1.columns:
+    if 'ID' not in df1.columns or 'ACT' not in df1.columns:
         st.error("Le premier fichier doit contenir les colonnes 'id' et 'act'.")
     elif 'proc_id' not in df2.columns or 'proc_title' not in df2.columns or 'N json' not in df2.columns:
         st.error("Le deuxième fichier doit contenir les colonnes 'proc_id', 'proc_title' et 'N json'.")
