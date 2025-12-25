@@ -36,8 +36,11 @@ def process_files(df1, df2):
         how='left'
     )
 
-    # Remplacer les valeurs manquantes de N json par "Vide"
-    merged_df['N json'] = merged_df['N json'].fillna("Vide")
+    # Pour les lignes sans correspondance, mettre "Vide" dans N json
+    merged_df['N json'] = merged_df.apply(
+        lambda row: "Vide" if pd.isna(row['N json']) and (row['proc_id'] is pd.NA or row['proc_id'] is None) else row['N json'],
+        axis=1
+    )
 
     # Extraire uniquement les colonnes nécessaires
     result_df = merged_df[['id', 'N json', 'act']]
