@@ -27,13 +27,19 @@ def process_files(df1, df2):
     df1['id'] = df1['id'].astype(str)
     df2['proc_id'] = df2['proc_id'].astype(str)
 
-    # Merge avec un left join pour conserver toutes les lignes du premier fichier
-    merged_df = pd.merge(df1, df2, left_on=['id', 'act'], right_on=['proc_id', 'proc_title'], how='left')
+    # Left merge pour conserver toutes les lignes du premier fichier
+    merged_df = pd.merge(
+        df1,
+        df2[['proc_id', 'proc_title', 'N json']],
+        left_on=['id', 'act'],
+        right_on=['proc_id', 'proc_title'],
+        how='left'
+    )
 
     # Remplacer les valeurs manquantes de N json par "Vide"
     merged_df['N json'] = merged_df['N json'].fillna("Vide")
 
-    # Extraire les colonnes demandées
+    # Extraire uniquement les colonnes nécessaires
     result_df = merged_df[['id', 'N json', 'act']]
 
     return result_df
@@ -56,6 +62,6 @@ if file1 and file2:
             with open(result_file, "rb") as f:
                 st.download_button("Télécharger le fichier Excel", f, file_name="result.xlsx")
         else:
-            st.warning("Aucune correspondance trouvée entre les fichiers.")
+            st.warning("Aucune ligne trouvée ou problème dans les fichiers.")
     except Exception as e:
         st.error(f"Erreur lors du traitement : {e}")
