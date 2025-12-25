@@ -15,7 +15,7 @@ def process_files(df1, df2):
     # Identifier les colonnes principales
     # df1 : id et act
     # df2 : proc_id, proc_title, N json
-    if not all(col in df1.columns for col in ['id', 'act']):
+    if not all(col in df1.columns for col in ['ID', 'ACT']):
         st.error("Le premier fichier doit contenir les colonnes 'id' et 'act'.")
         return None
     if not all(col in df2.columns for col in ['proc_id', 'proc_title', 'N json']):
@@ -27,13 +27,13 @@ def process_files(df1, df2):
     df2['proc_id'] = df2['proc_id'].astype(str)
 
     # Merge des fichiers sur les colonnes correspondantes
-    merged_df = pd.merge(df1, df2, left_on=['id', 'act'], right_on=['proc_id', 'proc_title'], how='inner')
+    merged_df = pd.merge(df1, df2, left_on=['ID', 'ACT'], right_on=['proc_id', 'proc_title'], how='inner')
 
     # Nettoyage des colonnes après merge
     merged_df.columns = merged_df.columns.str.strip()
 
     # Extraire les colonnes demandées
-    result_df = merged_df[['id', 'N json', 'act']]
+    result_df = merged_df[['ID', 'N json', 'ACT']]
 
     return result_df
 
